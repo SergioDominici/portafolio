@@ -1,26 +1,128 @@
 @import "tailwindcss";
 
+/* ============================================================
+   Portafolio dev — oscuro, limpio y moderno (estilo porfolio.dev)
+   ============================================================ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #08080a;
+  --bg2: #101013;      /* tarjetas */
+  --bg3: #17171b;      /* hover */
+  --line: #232329;
+  --line2: #34343d;
+  --ink: #f4f4f6;
+  --muted: #b3b3bd;
+  --faint: #74747f;
+  --accent: #b478ff;   /* morado (más vivo para resaltar en negro) */
+  --accent-2: #f43f5e; /* rojo */
+  --green: #34d399;
+}
+
+:root[data-theme="light"] {
+  --bg: #f7f7f5;
+  --bg2: #ffffff;
+  --bg3: #f0f0ee;
+  --line: #e6e6e2;
+  --line2: #d5d5cf;
+  --ink: #16161a;
+  --muted: #56565f;
+  --faint: #8a8a93;
+  --accent: #8b2fd6;
+  --accent-2: #e11d48;
+  --green: #0ea371;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-bg: var(--bg);
+  --color-bg2: var(--bg2);
+  --color-bg3: var(--bg3);
+  --color-line: var(--line);
+  --color-line2: var(--line2);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-accent: var(--accent);
+  --color-accent2: var(--accent-2);
+  --color-green: var(--green);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 6px;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Resplandor muy sutil detrás del hero (morado → rojo) */
+.hero-glow {
+  background:
+    radial-gradient(46% 42% at 34% 0%, color-mix(in oklab, var(--accent) 10%, transparent), transparent 68%),
+    radial-gradient(40% 38% at 70% 2%, color-mix(in oklab, var(--accent-2) 7%, transparent), transparent 70%);
+}
+
+/* Gradiente de marca (morado → rojo) */
+.text-brand {
+  background: linear-gradient(100deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.btn-brand {
+  background: linear-gradient(100deg, var(--accent), var(--accent-2));
+  color: #fff;
+}
+
+/* Cuadrícula técnica muy tenue */
+.grid-bg {
+  background-image:
+    linear-gradient(to right, var(--line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(70% 55% at 50% 0%, #000 20%, transparent 75%);
+  -webkit-mask-image: radial-gradient(70% 55% at 50% 0%, #000 20%, transparent 75%);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line2);
+  border-radius: 999px;
+  border: 3px solid var(--bg);
+}
+
+@keyframes wave {
+  0%, 60%, 100% { transform: rotate(0deg); }
+  15% { transform: rotate(16deg); }
+  30% { transform: rotate(-8deg); }
+  45% { transform: rotate(14deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
