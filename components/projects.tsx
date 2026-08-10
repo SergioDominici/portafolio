@@ -86,7 +86,7 @@ function ProjectCard({ p, index }: { p: Project; index: number }) {
             className="inline-flex items-center gap-2 rounded-xl border border-line bg-bg2 px-4 py-2.5 text-sm font-medium text-ink transition-colors hover:border-line2 hover:bg-bg3"
           >
             <ExternalIcon />
-            Visitar sitio
+            {p.cta ?? "Visitar sitio"}
           </a>
         </div>
       </div>

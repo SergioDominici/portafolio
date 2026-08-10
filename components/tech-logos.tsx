@@ -105,8 +105,31 @@ export const TECH: Record<string, Tech> = {
       </svg>
     ),
   },
+  IA: {
+    name: "IA",
+    color: "#b478ff",
+    icon: (
+      <svg width={s} height={s} viewBox="0 0 24 24" aria-hidden fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 3v3M12 18v3M3 12h3M18 12h3" />
+        <rect x="7" y="7" width="10" height="10" rx="2.5" />
+        <circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none" />
+      </svg>
+    ),
+  },
+  VPS: {
+    name: "VPS",
+    color: "#34d399",
+    icon: (
+      <svg width={s} height={s} viewBox="0 0 24 24" aria-hidden fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="3" y="4" width="18" height="7" rx="1.6" />
+        <rect x="3" y="13" width="18" height="7" rx="1.6" />
+        <path d="M7 7.5h.01M7 16.5h.01" />
+      </svg>
+    ),
+  },
 };
 
 export function getTech(name: string): Tech {
-  return TECH[name] ?? { name, color: "#ffffff", icon: null };
+  // Reserva: color de texto tenue que funciona en tema claro y oscuro.
+  return TECH[name] ?? { name, color: "var(--faint)", icon: null };
 }
